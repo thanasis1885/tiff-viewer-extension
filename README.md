@@ -1,16 +1,41 @@
-# Tiff viewer extension
-A Chrome/Firefox extension that enables TIFF images inline in your browser, as if they were supported for real!
+# TIFF Viewer Extension
+Chromium Manifest V3 continuation of the original TIFF Viewer extension by `my codeworks`.
 
-## Fork status
-This workspace now includes an unofficial Chromium Manifest V3 continuation of the original project.
+This fork keeps the project usable on current Chromium browsers after the original Chrome-compatible Manifest V2 architecture stopped working.
 
-The original project lives at [my-codeworks/tiff-viewer-extension](https://github.com/my-codeworks/tiff-viewer-extension) and the goal of this continuation is narrow:
+## Project status
+- Maintained Chromium build: `chrome-mv3/`
+- Historical upstream MV2 source retained at the repository root
+- Current Chromium package version: `2.0.1`
 
-1. keep the original extension available for Chromium-based browsers
-2. preserve the original behavior as closely as possible
-3. clearly document what changed and why
+## Why this fork exists
+The original extension depended on a persistent background page, blocking `webRequest`, and synchronous `XMLHttpRequest`. That model survived longer in Firefox, but Chromium's Manifest V2 deprecation removed the path that made the old Chrome build work.
 
-The actively maintained Chromium build is in `chrome-mv3/`.
+This continuation keeps the original idea alive while staying explicit about what changed, why it changed, and where the original work came from.
+
+## What is in this repository
+- `chrome-mv3/`: the maintained Chromium package
+- `MIGRATION_NOTES.md`: technical breakdown of the MV2 to MV3 migration
+- `docs/CHROME_WEB_STORE_LISTING.md`: store-ready listing copy and publishing notes
+- `docs/releases/2.0.1.md`: release notes draft for the public fork launch
+
+## Quick start
+1. Open `chrome://extensions`
+2. Enable `Developer mode`
+3. Click `Load unpacked`
+4. Select the `chrome-mv3` directory
+
+## Current Chromium behavior
+- Direct `.tif` and `.tiff` navigations open in a dedicated extension viewer
+- Inline TIFF images are replaced in-page when Chromium cannot render them natively
+- Rendering stays local inside the browser using the bundled TIFF decoder
+- The options page still allows decoder memory tuning and debug output
+
+## Known limitations
+- The Chromium build still uses the bundled `tiff.min.js` decoder from upstream
+- Existing decoder limits from the libtiff port still apply
+- JPEG-compressed TIFF support is still limited by the upstream decoder build
+- Some content-type-only inline TIFF cases are best-effort under MV3
 
 ## Credit
 Full credit for the original extension, concept, and historical implementation goes to the original author and contributors.
@@ -20,51 +45,12 @@ Full credit for the original extension, concept, and historical implementation g
 - Existing upstream contributor credit: [Paul Heil](https://github.com/Pheil) for pull requests updating the TIFF library and adding the options page
 - TIFF decoding library credit: [Seikichi's tiff.js](https://github.com/seikichi/tiff.js/tree/master)
 
-This continuation is intended as maintenance work on top of the original project, not a claim of authorship over the original extension.
+This continuation is maintenance work on top of the original project, not a claim of authorship over the original extension.
 
-## Download
-Chrome: https://chrome.google.com/webstore/detail/tiff-viewer/fciggfkkblggmebjbekbebbcffeacknj
+## Related notes
+- Migration notes: [MIGRATION_NOTES.md](MIGRATION_NOTES.md)
+- Chrome Web Store copy: [docs/CHROME_WEB_STORE_LISTING.md](docs/CHROME_WEB_STORE_LISTING.md)
+- Release notes draft: [docs/releases/2.0.1.md](docs/releases/2.0.1.md)
 
-Firefox: https://addons.mozilla.org/en-US/firefox/addon/tiff-viewer/
-
-## What does it do?
-The extension works by intercepting any attempt by the browser to load a URL that ends in .tiff (or variants) and handling that request instead. The handling consists of using a Javascript, LLVM/Emscripten, port of libtiff to render the TIFF image onto an in memory canvas. The canvas has a method for getting its content as a `data:image` URL and that is used to get a redirect URL for the original browser request.
-
-So:
-
- 1. Block original request
- 2. Load image data from requested URL using XHR
- 3. Render received image data into a canvas
- 4. Get `data:image` URI from canvas and redirect to it
-
-The effect is that the TIFF images appear on page as if the browser had native support for TIFF images. There is a small delay though, due to the fact that we have to download and decode the image separately. But it's small enough that you won't notice it unless you look for it.
-
-# Known limitations
-The extension has a few limitations that might be worth knowing about. If you find an image it cant decode or if it decodes it incorrectly etc open an issue, include the URL to the image and I'll have a look.
-
-## Memory
-The libtiff port has a limited amount of memory available for decoding the image. Currently it's set to 32MB, 33554432 bytes. This is pretty high and that is because the port doesn't really use memory efficiently. It seems to be loading the entire image into memory before manipulating it. In my tests this was enough to decode a 1200x1600 pixel image and should be enough for most uses.
-
-If you run into problems with it you can change the amount in the options page.
-
-## libtiff.js
-I'm using Seikichi's port of libtiff, [seikichi/tiff.js](https://github.com/seikichi/tiff.js/tree/master), and the extension has the same limitations as his port. Mainly it's the memory issue discussed above. But it also doesn't support JPEG compressed Tiffs since Seikichi didn't link libjpeg when he compiled libtiff :)
-
-# Plans
-It would be nice to have a real Javascript decoder for tiffs, instead of the LLVM port. G.P. Hemsley has that going over at Github as well, [GPHemsley/tiff-js](https://github.com/GPHemsley/tiff-js), so I might get into that if I have some time over (so probably not tbh).
-
-Replace images with a `blob` instead of `data:image`.
-
-Another approach for intercepting the image and decoding would also be nice since it has to be synchronous now and that means I can't use the nice XHR bytearray return type but had to hack my own conversion that eats time as well...
-
-# Thanks to
-[Paul Heil](https://github.com/Pheil) for his pull requests updating the tiff library and adding the options page.
-
-[Seikichi](https://github.com/seikichi) for his port of libtiff. That saved me some serious time and effort.
-
-The Google Chrome team for decent documentation that made it relatively simple to implement this.
-
-Mozilla for [MDN](https://developer.mozilla.org), THE best resource when you want to quickly look up some Javascript API :)
-
-# License
-I'm using the MIT license for this. See the LICENSE document for more info.
+## License
+MIT. See [LICENSE](LICENSE).

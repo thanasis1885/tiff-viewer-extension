@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "TIFF viewer",
-  "description": "Intercepts direct TIFF navigations and renders TIFF images inline in Chromium browsers using a local libtiff port.",
+  "description": "Open TIFF/TIF images in Chromium browsers with inline page rendering and a dedicated Manifest V3 viewer.",
   "version": "2.0.1",
-  "homepage_url": "https://github.com/my-codeworks/tiff-viewer-extension",
+  "homepage_url": "https://github.com/thanasis1885/tiff-viewer-extension",
   "minimum_chrome_version": "109",
   "incognito": "split",
   "author": "my codeworks",
