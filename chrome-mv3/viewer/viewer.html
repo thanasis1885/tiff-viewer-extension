@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TIFF Viewer</title>
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <main class="layout">
+    <header class="hero">
+      <img class="hero__icon" src="../icon128.png" alt="" width="64" height="64">
+      <div>
+        <p class="eyebrow">Chromium Manifest V3 viewer</p>
+        <h1>TIFF Viewer</h1>
+        <p class="lede">Rendering the requested TIFF locally inside the extension.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <p class="status" id="status">Preparing renderer...</p>
+      <p class="error" id="error" hidden></p>
+      <img class="preview" id="preview" alt="Rendered TIFF output" hidden>
+      <div class="meta" id="meta" hidden>
+        <p class="meta__label">Original request</p>
+        <a id="source-link" rel="noreferrer noopener" target="_blank"></a>
+      </div>
+    </section>
+  </main>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

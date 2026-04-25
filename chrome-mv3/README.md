@@ -1,26 +1,15 @@
 # Tiff viewer extension
 A Chrome/Firefox extension that enables TIFF images inline in your browser, as if they were supported for real!
 
-## Fork status
-This workspace now includes an unofficial Chromium Manifest V3 continuation of the original project.
+## Chrome MV3 package
+This `chrome-mv3` folder contains a Chromium-focused Manifest V3 port.
 
-The original project lives at [my-codeworks/tiff-viewer-extension](https://github.com/my-codeworks/tiff-viewer-extension) and the goal of this continuation is narrow:
+To try it locally:
 
-1. keep the original extension available for Chromium-based browsers
-2. preserve the original behavior as closely as possible
-3. clearly document what changed and why
-
-The actively maintained Chromium build is in `chrome-mv3/`.
-
-## Credit
-Full credit for the original extension, concept, and historical implementation goes to the original author and contributors.
-
-- Original repository: [my-codeworks/tiff-viewer-extension](https://github.com/my-codeworks/tiff-viewer-extension)
-- Original author: `my codeworks`
-- Existing upstream contributor credit: [Paul Heil](https://github.com/Pheil) for pull requests updating the TIFF library and adding the options page
-- TIFF decoding library credit: [Seikichi's tiff.js](https://github.com/seikichi/tiff.js/tree/master)
-
-This continuation is intended as maintenance work on top of the original project, not a claim of authorship over the original extension.
+1. Open `chrome://extensions`
+2. Enable Developer mode
+3. Click **Load unpacked**
+4. Select the `chrome-mv3` directory
 
 ## Download
 Chrome: https://chrome.google.com/webstore/detail/tiff-viewer/fciggfkkblggmebjbekbebbcffeacknj
