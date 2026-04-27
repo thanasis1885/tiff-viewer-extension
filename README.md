@@ -7,6 +7,7 @@ This fork keeps the project usable on current Chromium browsers after the origin
 - Maintained Chromium build: `chrome-mv3/`
 - Historical upstream MV2 source retained at the repository root
 - Current Chromium package version: `2.0.1`
+- Chrome Web Store listing: [TIFF Viewer](https://chromewebstore.google.com/detail/tiff-viewer/dldbfebnfnefnklickhbgefihbldljok)
 
 ## Why this fork exists
 The original extension depended on a persistent background page, blocking `webRequest`, and synchronous `XMLHttpRequest`. That model survived longer in Firefox, but Chromium's Manifest V2 deprecation removed the path that made the old Chrome build work.
