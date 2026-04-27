@@ -1,5 +1,10 @@
 # Chrome Web Store listing draft
 
+## Published listing
+TIFF Viewer is now live on the Chrome Web Store:
+
+- `https://chromewebstore.google.com/detail/tiff-viewer/dldbfebnfnefnklickhbgefihbldljok`
+
 ## Recommended title
 TIFF Viewer
 
@@ -40,6 +45,9 @@ Support URL:
 
 Homepage URL:
 - repository homepage for the maintained fork
+
+Published listing URL:
+- `https://chromewebstore.google.com/detail/tiff-viewer/dldbfebnfnefnklickhbgefihbldljok`
 
 ## Suggested screenshots
 - Direct TIFF navigation rendered in the dedicated viewer
