@@ -68,12 +68,24 @@ function setZoom(zoom, mode) {
   applyZoom();
 }
 
+function getViewportContentWidth() {
+  const viewportStyles = window.getComputedStyle(viewportElement);
+  const horizontalPadding =
+    (parseFloat(viewportStyles.paddingLeft) || 0) +
+    (parseFloat(viewportStyles.paddingRight) || 0);
+
+  return Math.max(
+    240,
+    viewportElement.getBoundingClientRect().width - horizontalPadding
+  );
+}
+
 function fitPreviewToWidth() {
   if (!zoomState.naturalWidth) {
     return;
   }
 
-  const availableWidth = Math.max(240, viewportElement.clientWidth - 36);
+  const availableWidth = getViewportContentWidth();
   setZoom(availableWidth / zoomState.naturalWidth, "fit-width");
 }
 
