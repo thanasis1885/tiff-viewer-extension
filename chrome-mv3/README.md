@@ -3,7 +3,7 @@ This directory contains the maintained Manifest V3 package for Chromium-based br
 
 ## Package status
 - Target runtime: Chrome, Edge, and other Chromium browsers with MV3 support
-- Package version: `2.0.1`
+- Package version: `2.0.2`
 - Repository home: `thanasis1885/tiff-viewer-extension`
 - Chrome Web Store: [TIFF Viewer](https://chromewebstore.google.com/detail/tiff-viewer/dldbfebnfnefnklickhbgefihbldljok)
 
