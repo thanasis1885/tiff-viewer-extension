@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "TIFF viewer",
   "description": "Open TIFF/TIF images in Chromium browsers with inline page rendering and a dedicated Manifest V3 viewer.",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage_url": "https://github.com/thanasis1885/tiff-viewer-extension",
   "minimum_chrome_version": "109",
   "incognito": "split",
