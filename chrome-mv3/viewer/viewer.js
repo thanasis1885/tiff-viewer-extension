@@ -7,6 +7,7 @@ const metaElement = document.getElementById("meta");
 const sourceLinkElement = document.getElementById("source-link");
 const openSourceElement = document.getElementById("open-source");
 const goBackButton = document.getElementById("go-back");
+const printViewButton = document.getElementById("print-view");
 const zoomReadoutElement = document.getElementById("zoom-readout");
 const zoomOutButton = document.getElementById("zoom-out");
 const zoomInButton = document.getElementById("zoom-in");
@@ -28,7 +29,7 @@ function setStatus(text) {
 
 function showError(text) {
   errorElement.textContent = text;
-  errorElement.hidden = false;
+  errorElement.hidden = true;
   controlsElement.hidden = true;
   viewportElement.hidden = true;
   setStatus("The TIFF image could not be rendered.");
@@ -148,6 +149,10 @@ goBackButton.addEventListener("click", () => {
   if (currentSourceUrl) {
     window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
   }
+});
+
+printViewButton.addEventListener("click", () => {
+  window.print();
 });
 
 zoomOutButton.addEventListener("click", zoomOut);
