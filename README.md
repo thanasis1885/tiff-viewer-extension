@@ -6,7 +6,7 @@ This fork keeps the project usable on current Chromium browsers after the origin
 ## Project status
 - Maintained Chromium build: `chrome-mv3/`
 - Historical upstream MV2 source retained at the repository root
-- Current Chromium package version: `2.0.1`
+- Current Chromium package version: `2.0.2`
 - Chrome Web Store listing: [TIFF Viewer](https://chromewebstore.google.com/detail/tiff-viewer/dldbfebnfnefnklickhbgefihbldljok)
 
 ## Why this fork exists
@@ -18,7 +18,7 @@ This continuation keeps the original idea alive while staying explicit about wha
 - `chrome-mv3/`: the maintained Chromium package
 - `MIGRATION_NOTES.md`: technical breakdown of the MV2 to MV3 migration
 - `docs/CHROME_WEB_STORE_LISTING.md`: store-ready listing copy and publishing notes
-- `docs/releases/2.0.1.md`: release notes draft for the public fork launch
+- `docs/releases/2.0.2.md`: release notes draft for the current Chromium update
 
 ## Quick start
 1. Open `chrome://extensions`
@@ -51,7 +51,7 @@ This continuation is maintenance work on top of the original project, not a clai
 ## Related notes
 - Migration notes: [MIGRATION_NOTES.md](MIGRATION_NOTES.md)
 - Chrome Web Store copy: [docs/CHROME_WEB_STORE_LISTING.md](docs/CHROME_WEB_STORE_LISTING.md)
-- Release notes draft: [docs/releases/2.0.1.md](docs/releases/2.0.1.md)
+- Release notes draft: [docs/releases/2.0.2.md](docs/releases/2.0.2.md)
 
 ## License
 MIT. See [LICENSE](LICENSE).
