@@ -29,7 +29,7 @@ function setStatus(text) {
 
 function showError(text) {
   errorElement.textContent = text;
-  errorElement.hidden = true;
+  errorElement.hidden = false;
   controlsElement.hidden = true;
   viewportElement.hidden = true;
   setStatus("The TIFF image could not be rendered.");
