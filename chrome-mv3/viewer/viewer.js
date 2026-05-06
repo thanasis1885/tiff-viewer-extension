@@ -6,6 +6,7 @@ const controlsElement = document.getElementById("controls");
 const metaElement = document.getElementById("meta");
 const sourceLinkElement = document.getElementById("source-link");
 const openSourceElement = document.getElementById("open-source");
+const goBackButton = document.getElementById("go-back");
 const zoomReadoutElement = document.getElementById("zoom-readout");
 const zoomOutButton = document.getElementById("zoom-out");
 const zoomInButton = document.getElementById("zoom-in");
@@ -17,6 +18,8 @@ const zoomState = {
   zoom: 1,
   mode: "fit-width"
 };
+
+let currentSourceUrl = "";
 
 function setStatus(text) {
   statusElement.textContent = text;
@@ -33,6 +36,10 @@ function showError(text) {
 
 function getSourceUrlFromHash() {
   return window.location.hash ? window.location.hash.slice(1) : "";
+}
+
+function updateBackButtonState() {
+  goBackButton.disabled = window.history.length <= 1;
 }
 
 function clampZoom(zoom) {
@@ -101,10 +108,12 @@ async function renderCurrentTiff() {
     return;
   }
 
+  currentSourceUrl = sourceUrl;
   sourceLinkElement.href = sourceUrl;
   sourceLinkElement.textContent = sourceUrl;
   openSourceElement.href = sourceUrl;
   metaElement.hidden = false;
+  updateBackButtonState();
 
   setStatus("Fetching and decoding the TIFF image...");
 
@@ -129,6 +138,17 @@ async function renderCurrentTiff() {
     showError(error instanceof Error ? error.message : String(error));
   }
 }
+
+goBackButton.addEventListener("click", () => {
+  if (window.history.length > 1) {
+    window.history.back();
+    return;
+  }
+
+  if (currentSourceUrl) {
+    window.open(currentSourceUrl, "_blank", "noopener,noreferrer");
+  }
+});
 
 zoomOutButton.addEventListener("click", zoomOut);
 zoomInButton.addEventListener("click", zoomIn);
