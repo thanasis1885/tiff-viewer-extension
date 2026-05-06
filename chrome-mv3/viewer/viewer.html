@@ -7,20 +7,36 @@
   <link rel="stylesheet" href="viewer.css">
 </head>
 <body>
-  <main class="layout">
-    <header class="hero">
-      <img class="hero__icon" src="../icon128.png" alt="" width="64" height="64">
-      <div>
-        <p class="eyebrow">Chromium Manifest V3 viewer</p>
-        <h1>TIFF Viewer</h1>
-        <p class="lede">Rendering the requested TIFF locally inside the extension.</p>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <img class="brand__icon" src="../icon128.png" alt="" width="40" height="40">
+        <div>
+          <p class="eyebrow">Chromium Manifest V3 viewer</p>
+          <h1>TIFF Viewer</h1>
+        </div>
+      </div>
+
+      <div class="actions" id="controls" hidden>
+        <button class="button button--ghost" id="zoom-out" type="button" aria-label="Zoom out">-</button>
+        <button class="button" id="fit-width" type="button">Fit width</button>
+        <button class="button" id="actual-size" type="button">100%</button>
+        <button class="button button--ghost" id="zoom-in" type="button" aria-label="Zoom in">+</button>
+        <span class="zoom-readout" id="zoom-readout">100%</span>
+        <a class="button button--link" id="open-source" rel="noreferrer noopener" target="_blank">Open original</a>
       </div>
     </header>
 
-    <section class="card">
+    <section class="panel">
       <p class="status" id="status">Preparing renderer...</p>
       <p class="error" id="error" hidden></p>
-      <img class="preview" id="preview" alt="Rendered TIFF output" hidden>
+
+      <div class="viewport" id="viewport" hidden>
+        <div class="page" id="page">
+          <img class="preview" id="preview" alt="Rendered TIFF output" hidden>
+        </div>
+      </div>
+
       <div class="meta" id="meta" hidden>
         <p class="meta__label">Original request</p>
         <a id="source-link" rel="noreferrer noopener" target="_blank"></a>
