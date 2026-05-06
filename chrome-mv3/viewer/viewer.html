@@ -8,16 +8,8 @@
 </head>
 <body>
   <main class="shell">
-    <header class="topbar">
-      <div class="brand">
-        <img class="brand__icon" src="../icon128.png" alt="" width="40" height="40">
-        <div>
-          <p class="eyebrow">Chromium Manifest V3 viewer</p>
-          <h1>TIFF Viewer</h1>
-        </div>
-      </div>
-
-      <div class="actions" id="controls" hidden>
+    <section class="panel">
+      <div class="toolbar" id="controls" hidden>
         <button class="button button--ghost" id="zoom-out" type="button" aria-label="Zoom out">-</button>
         <button class="button" id="fit-width" type="button">Fit width</button>
         <button class="button" id="actual-size" type="button">100%</button>
@@ -25,9 +17,6 @@
         <span class="zoom-readout" id="zoom-readout">100%</span>
         <a class="button button--link" id="open-source" rel="noreferrer noopener" target="_blank">Open original</a>
       </div>
-    </header>
-
-    <section class="panel">
       <p class="status" id="status">Preparing renderer...</p>
       <p class="error" id="error" hidden></p>
 
