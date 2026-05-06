@@ -149,9 +149,9 @@ body {
 
 .viewport {
   margin: 16px 0 14px;
-  max-height: calc(100vh - 165px);
-  min-height: 55vh;
-  overflow: auto;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
   padding: 18px;
   border: 1px solid rgba(63, 78, 98, 0.12);
   border-radius: 20px;
@@ -162,7 +162,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  min-width: min-content;
+  width: max-content;
+  min-width: 100%;
 }
 
 .preview {
@@ -210,8 +211,6 @@ body {
   }
 
   .viewport {
-    min-height: 50vh;
-    max-height: calc(100vh - 190px);
     padding: 10px;
   }
 }
